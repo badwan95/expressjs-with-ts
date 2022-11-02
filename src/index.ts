@@ -2,9 +2,9 @@
 import server from "./main/app";
 import db from "./main/configs/database/database";
 
-(async function initiateStart(){
+(async function initiateStart() {
   // Check connection to DB, if everything is fine then start the server
-  try{
+  try {
     const c = await db.connect(); // try to connect
     c.done(); // success, release connection
     console.log("Connection to database verified.");

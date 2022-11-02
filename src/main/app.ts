@@ -1,7 +1,7 @@
 "use strict";
 
 // Outside modules
-import express, {Application, Request, Response, NextFunction} from "express";
+import express, { Application, Request, Response, NextFunction } from "express";
 // const morgan = require("morgan");
 
 import dotenv from "dotenv";
@@ -20,21 +20,16 @@ const app: Application = express();
 app.use(express.json());
 // app.use(morgan("dev"));
 
-app.get("/", (req: Request, res: Response) => {        
-  res.send("test");    
+app.get("/", (req: Request, res: Response) => {
+  res.send("test");
 });
-
-
-
-
-
 
 export default {
   server: app,
-  start: (port?:number) => {
+  start: (port?: number) => {
     const PORT = port || process.env.PORT || 3000;
     app.listen(PORT, () => {
       console.log(`Listening to port ${PORT}`);
     });
-  },
+  }
 };
