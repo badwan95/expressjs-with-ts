@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
 // Outside modules
-import express, { Application, Request, Response, NextFunction } from "express";
+import express, {Application, Request, Response} from 'express';
 // const morgan = require("morgan");
 
-import dotenv from "dotenv";
+import dotenv from 'dotenv';
 
 // require("dotenv").config();
 // const cors = require("cors");
@@ -20,8 +20,8 @@ const app: Application = express();
 app.use(express.json());
 // app.use(morgan("dev"));
 
-app.get("/", (req: Request, res: Response) => {
-  res.send("test");
+app.get('/', (req: Request, res: Response) => {
+  res.send('test');
 });
 
 export default {
@@ -31,5 +31,5 @@ export default {
     app.listen(PORT, () => {
       console.log(`Listening to port ${PORT}`);
     });
-  }
+  },
 };

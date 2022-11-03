@@ -1,0 +1,11 @@
+**/node_modules/*
+**/*.min.js
+**/vendor/*
+**/coverage/*
+**/build/*
+**/dist/*
+**/docs/*
+**/*.md
+**/*.json
+**/*.txt
+**/*.png
