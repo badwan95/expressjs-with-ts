@@ -1,28 +1,29 @@
 'use strict';
-
 // Outside modules
-import express, {Application, Request, Response} from 'express';
-// const morgan = require("morgan");
+import express, {Application} from 'express';
+import morgan from 'morgan';
+// Inner modules imports
+import {routes} from './routes';
+import {notFoundHandler} from './middleware/404';
+import errorHandler from './middleware/500';
 
 import dotenv from 'dotenv';
 
-// require("dotenv").config();
-// const cors = require("cors");
 dotenv.config();
 const app: Application = express();
 
-// My Routes
-// const projectRoute = (version) =>
-//   require(`./routes/projects/${version}/projects-api`);
-
 // Global Middleware
-// app.use(cors());
 app.use(express.json());
-// app.use(morgan("dev"));
+app.use(morgan('dev'));
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('test');
-});
+// Routes
+app.use('/', routes);
+
+// Not found handler
+app.use('*', notFoundHandler);
+
+// Error handler
+app.use(errorHandler);
 
 export default {
   server: app,
