@@ -7,9 +7,7 @@ import {routes} from './routes';
 import {notFoundHandler} from './middleware/404';
 import errorHandler from './middleware/500';
 
-import dotenv from 'dotenv';
-
-dotenv.config();
+import 'dotenv/config';
 const app: Application = express();
 
 // Global Middleware

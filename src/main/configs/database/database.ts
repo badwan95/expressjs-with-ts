@@ -1,10 +1,33 @@
-import pgPromise from 'pg-promise';
-const {PSQL_USERNAME, PSQL_USER_PASSWORD, PSQL_DB_NAME, PSQL_PORT, PSQL_HOST} =
-  process.env;
+import sql from 'mssql';
+import 'dotenv/config';
+const config = {
+  user: process.env.DB_USER || '',
+  password: process.env.DB_PASSWORD || '',
+  server: process.env.DB_SERVER || '',
+  database: process.env.DB_NAME || '',
+  options: {
+    encrypt: true, // Use SSL encryption
+    enableArithAbort: true, // Fix errors related to arithmetic operations
+    // In production this should be false
+    trustServerCertificate:
+      process.env.TrustServerCertificate === 'true' || false,
+  },
+};
 
-const pgp = pgPromise();
-const db = pgp(
-  `postgres://${PSQL_USERNAME}:${PSQL_USER_PASSWORD}@${PSQL_HOST}:${PSQL_PORT}/${PSQL_DB_NAME}`,
-);
+const pool = new sql.ConnectionPool(config);
 
-export default db;
+export const connectDB = async () => {
+  try {
+    await pool.connect();
+    console.log('Connected to the database');
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+};
+
+export default {
+  connectDB,
+};
+
+export {pool};
