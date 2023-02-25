@@ -1,8 +1,8 @@
 import {Router} from 'express';
-// Import all other routers here
+// Import general routes here
 import {testRoute} from './test-route';
 
 // eslint-disable-next-line new-cap
-export const routes = Router();
+export const generalRoutes = Router();
 
-routes.use(testRoute);
+generalRoutes.use(testRoute);
