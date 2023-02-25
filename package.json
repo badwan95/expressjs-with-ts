@@ -6,8 +6,13 @@
   "scripts": {
     "start": "rm -rf ./dist/ && tsc && node ./dist/index.js",
     "dev": "nodemon ./src/index.ts",
-    "lint": "eslint '**/*.ts'",
-    "build": "tsc"
+    "lint": "eslint src/**/*.ts",
+    "lint-fix": "eslint --fix src/**/*.ts",
+    "build": "tsc",
+    "pretty": "prettier --write src/**/*.ts",
+    "prepare": "husky install",
+    "precommit": "npm run lint-fix && npm run pretty",
+    "prepush": "npm run lint"
   },
   "repository": {
     "type": "git",
@@ -34,6 +39,7 @@
     "eslint": "^8.26.0",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^8.5.0",
+    "husky": "^8.0.3",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.20",
     "prettier": "^2.7.1",
