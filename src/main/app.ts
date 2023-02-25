@@ -5,7 +5,7 @@ import morgan from 'morgan';
 // Inner modules imports
 import {notFoundHandler} from './middleware/404';
 import {version} from './middleware/version';
-import errorHandler from './middleware/500';
+import errorHandler from './middleware/error';
 // Import all other routers here
 import {generalRoutes} from './routes';
 import {routesV1} from './routes/api/v1/routes';

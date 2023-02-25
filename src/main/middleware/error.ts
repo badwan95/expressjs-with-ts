@@ -7,5 +7,5 @@ export default (
   res: Response,
   next: NextFunction,
 ) => {
-  res.status(500).send({err: 'Server Error Detected: ' + err});
+  res.status(res.statusCode || 500).json({err: 'Error: ' + err});
 };
