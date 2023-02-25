@@ -12,6 +12,7 @@
     "pretty": "prettier --write src/**/*.ts",
     "prepare": "husky install",
     "precommit": "npm run lint-fix && npm run pretty",
+    "pm2-start": "tsc && pm2 start pm2.config.js",
     "prepush": "npm run lint"
   },
   "repository": {
@@ -28,7 +29,8 @@
   "dependencies": {
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "pg-promise": "^10.12.1"
+    "pg-promise": "^10.12.1",
+    "pm2": "^5.2.2"
   },
   "devDependencies": {
     "@types/express": "^4.17.14",
