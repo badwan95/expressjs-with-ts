@@ -1,5 +1,6 @@
 import {Router, Request, Response, NextFunction} from 'express';
 import {IUser} from '../../../../types/types';
+import {authenticate} from '../../../middleware/auth/authenticate-token';
 import {generateAccessToken} from '../../../middleware/auth/token';
 
 // eslint-disable-next-line new-cap
@@ -19,6 +20,14 @@ authRoutes.get(
       res.status(400);
       next(e);
     }
+  },
+);
+
+authRoutes.get(
+  '/protected-route',
+  authenticate,
+  (req: Request, res: Response) => {
+    res.send('Protected route');
   },
 );
 

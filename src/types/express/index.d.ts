@@ -1,6 +1,10 @@
 /* eslint-disable no-unused-vars */
-declare namespace Express {
-  export interface Request {
-    version?: Language;
+import {IUser} from '../types';
+declare global {
+  namespace Express {
+    interface Request {
+      version?: Language;
+      user?: IUser;
+    }
   }
 }

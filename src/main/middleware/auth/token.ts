@@ -4,7 +4,7 @@ const ACCESS_TOKEN_SECRET = process.env['ACCESS_TOKEN_SECRET']!;
 const ACCESS_TOKEN_SECRET_EXPIRY =
   process.env['ACCESS_TOKEN_SECRET_EXPIRY'] || '15m';
 
-export const generateAccessToken = async (user: IUser): Promise<string> => {
+export const generateAccessToken = (user: IUser): Promise<string> => {
   return new Promise((resolve, reject) => {
     const payload = {
       full_name: user.name,
