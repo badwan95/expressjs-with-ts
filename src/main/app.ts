@@ -1,4 +1,6 @@
 'use strict';
+import dotenv from 'dotenv';
+dotenv.config();
 // Outside modules
 import express, {Application} from 'express';
 import morgan from 'morgan';
@@ -11,9 +13,6 @@ import {generalRoutes} from './routes';
 import {routesV1} from './routes/api/v1/routes';
 import {routesV2} from './routes/api/v2/routes';
 
-import dotenv from 'dotenv';
-
-dotenv.config();
 const app: Application = express();
 
 // Global Middleware
