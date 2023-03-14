@@ -2,6 +2,7 @@
 import {Request, Response, NextFunction, Handler} from 'express';
 import jwt from 'jsonwebtoken';
 const ACCESS_TOKEN_SECRET = process.env['ACCESS_TOKEN_SECRET']!;
+const REFRESH_TOKEN_SECRET = process.env['REFRESH_TOKEN_SECRET']!;
 
 export const authenticate: Handler = (
   req: Request,
@@ -25,5 +26,16 @@ export const authenticate: Handler = (
     // };
     // req.user = user;
     next();
+  });
+};
+
+export const verifyRefreshToken = (token: string): Promise<any> => {
+  return new Promise((resolve, reject) => {
+    try {
+      const verifiedToken = jwt.verify(token, REFRESH_TOKEN_SECRET);
+      resolve(verifiedToken);
+    } catch (e) {
+      reject(e);
+    }
   });
 };
